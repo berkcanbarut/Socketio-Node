@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Robot Managament</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.1/socket.io.js" integrity="sha512-9mpsATI0KClwt+xVZfbcf2lJ8IFBAwsubJ6mI3rtULwyM3fBmQFzj0It4tGqxLOGQwGfJdk/G+fANnxfq9/cew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  </head>
+  <body>
+    <div class="row m-0 py-5 px-2">
+      <div class="col-lg-4 col-12 client-job p-4 border">
+        <h3>Job Create Message</h3>
+        <form >
+          <div class="mb-3">
+            <label for="messageType" class="form-label">Message Type:</label>
+            <input type="word" class="form-control" name="messageType" id="messageType" aria-describedby="messageType">
+          </div>
+          <div class="mb-3">
+            <label for="externalReferenceId" class="form-label">External Reference ID:</label>
+            <input type="word" class="form-control" name="externalReferenceId" id="externalReferenceId">
+          </div>
+          <div class="mb-3" id="taskList">
+            <div class="d-flex justify-content-between">
+              <h5 for="#" class="form-label">Task List</h5>
+              <button type="button" class="btn btn-secondary btn-sm" id="addTask">Add Task +</button>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <label for="actionName1" class="form-label">Action Name 1:</label>
+                <input type="word" class="form-control"  name="actionName1" id="actionName1">
+              </div>
+              <div class="col-6">
+                <label for="locationId1" class="form-label">Location ID 1:</label>
+                <input type="word" class="form-control"  name="locationId1" id="locationId1">
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="jobStatus" class="form-label">Job Status:</label>
+            <input type="word" class="form-control" name="jobStatus" id="jobStatus">
+          </div>
+          <button type="button" class="btn btn-primary" id="createMessage">Create</button>
+        </form>
+      </div>
+      <div class="col-lg-4 col-12 p-4 border">
+        <h3>Job Update Robot</h3>
+        <form >
+          <div class="mb-3">
+            <label for="messageType1" class="form-label">Message Type:</label>
+            <input type="word" class="form-control" name="messageType1" id="messageType1" aria-describedby="messageType1">
+          </div>
+          <div class="mb-3">
+            <label for="externalReferenceId1" class="form-label">External Reference ID:</label>
+            <input type="word" class="form-control" name="externalReferenceId1" id="externalReferenceId1">
+          </div>
+          <div class="mb-3" id="taskList">
+            <div class="d-flex justify-content-between">
+              <label for="jobStatus" class="form-label">Last Completed Task:</label>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <label for="actionUpdate" class="form-label">Action Name:</label>
+                <input type="word" class="form-control"  name="actionUpdate" id="actionUpdate">
+              </div>
+              <div class="col-6">
+                <label for="loactionUpdate" class="form-label">Location ID:</label>
+                <input type="word" class="form-control"  name="loactionUpdate" id="loactionUpdate">
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="jobStatus1" class="form-label">Job Status:</label>
+            <input type="word" class="form-control" name="jobStatus1" id="jobStatus1">
+          </div>
+          <button type="button" class="btn btn-danger" id="updateMessage">Update</button>
+        </form>
+      </div>
+      <div class="col-lg-4 col-12 p-4 border">
+        <div>
+          <h3>Battery Info</h3>
+          <p>Battery Level : <span id="battery">NaN</span></p>
+          
+        </div>
+        <hr>
+        <div>
+          <h3>Job Update</h3>
+          <p class="mb-2"> <b>Message Type :</b> <span id="msgType">No Data</span></p>
+          <p class="mb-2"><b>External Reference ID :</b> <span id="extRef">No Data</span></p>
+          <h6><b>Last Completed Task</b></h6>
+          <hr>
+          <p class="mb-2"><b>Action Name :</b> <span id="action">No Data</span></p>
+          <p class="mb-2"><b>Location ID :</b> <span id="location">No Data</span></p>
+          <hr>
+          <p class="mb-2"><b>Job Status :</b> <span id="jobSts">No Data</span></p>
+        </div>
+        
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <script src="/clientSocket.js"></script>
+  </body>
+</html>
